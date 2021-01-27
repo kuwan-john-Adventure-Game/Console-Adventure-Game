@@ -13,10 +13,10 @@ public class adventuregame {
         String userInput = scan.nextLine();
         System.out.println();
         do {
-            System.out.println("what would you like to do "+userInput+" ? attack, revive or run");
+            System.out.println("what would you like to do "+ userInput+" ? attack, revive or run");
              String response = scan.nextLine().trim();
-            System.out.println("your health is "+heroHealth);
-            System.out.println("enemy's health is "+enemyHealth);
+            System.out.println("your health is "+ heroHealth);
+            System.out.println("enemy's health is "+ enemyHealth);
              if (response.equals("attack")) {
                 enemyHealth = enemyHealth - attk;
 
