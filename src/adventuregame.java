@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class adventuregame {
     public static void main(String[] args) throws InterruptedException {
         int heroHP = 100;
-        int enemyHP = 25;
+        int enemyHP = 75;
 //        int ATK = (int) (Math.random() * 35);
         int potion = 15;
 //        int enemyATK = (int) (Math.random() * 20);
