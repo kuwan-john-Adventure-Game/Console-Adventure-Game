@@ -28,7 +28,7 @@ public class AdventureGame {
                 Thread.sleep(800);
                 System.out.print("An enemy approaches! ");
                 Thread.sleep(1500);
-                System.out.println("..quick, do something!");
+                System.out.println("..quick, confront your enemy!");
                 Thread.sleep(1200);
                 System.out.printf("{%s's HP: \033[0;32m%s\u001B[0m <===||===> \033[0;32m%d\u001B[0m :Enemy's HP}%n", name, heroHP, enemyHP);
 
