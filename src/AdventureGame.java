@@ -4,10 +4,11 @@ public class AdventureGame {
     public static void main(String[] args) throws InterruptedException {
 
         int heroHP = 100;
-        int enemyHP = 5;
+        int enemyHP = 80;
         int potion = 15;
         boolean escaped = false;
 
+        // Introduction & permission to enter the Battler
         Scanner scan = new Scanner(System.in);
         System.out.println("What is your name, adventurer?");
         String name = scan.next();
@@ -18,6 +19,7 @@ public class AdventureGame {
         System.out.println("Are you willing to step into the Java Battler?");
         String answer = scan.next().toLowerCase();
 
+        // Into the Java Battler
         if (answer.startsWith("y")) {
                 Thread.sleep(500);
                 System.out.println("Welcome to the Java Battler.");
@@ -29,15 +31,16 @@ public class AdventureGame {
                 System.out.println("..quick, do something!");
                 Thread.sleep(1200);
                 System.out.printf("{%s's HP: \033[0;32m%s\u001B[0m <===||===> \033[0;32m%d\u001B[0m :Enemy's HP}%n", name, heroHP, enemyHP);
-//                System.out.println(name + "'s HP: " + heroHP + " <---||---> Enemy HP: " + enemyHP);
+
+            // Battling sequence
             do {
                 int ATK = (int) (Math.random() * 35);
                 int enemyATK = (int) (Math.random() * 20);
                 Thread.sleep(500);
                 System.out.format("\033[0;33m[A]ttack\n\033[0;34m[P]otion\n\033[0;35m[E]scape\u001B[0m%n");
-//                System.out.println(name + "'s HP: " + heroHP + " <---||---> Enemy HP: " + enemyHP);
                 String response = scan.next().trim();
 
+                // Attacking sequence
                 if (response.toLowerCase().startsWith("a")) {
                     enemyHP -= ATK;
 
@@ -47,25 +50,26 @@ public class AdventureGame {
                     System.out.println("The enemy attacks for: " + enemyATK + "!");
                     Thread.sleep(1200);
                     heroHP = heroHP - enemyATK;
-//                    System.out.println(name + "'s HP: " + heroHP + " <---||---> Enemy HP: " + enemyHP);
                     System.out.printf("{%s's HP: \033[0;32m%s\u001B[0m <===||===> \033[0;32m%d\u001B[0m :Enemy's HP}%n", name, heroHP, enemyHP);
+
+                // Potion sequence
                 } else if (response.toLowerCase().startsWith("p")) {
                     Thread.sleep(500);
                     System.out.println("You drink a potion and gain " + potion + " health.");
                     Thread.sleep(1000);
 
+                    // Method to !exceed maximum HP
                     if (heroHP + potion >= 100) {
                         heroHP = 100;
                     } else {
                         heroHP += potion;
                     }
-
                     heroHP -= enemyATK;
                     System.out.println("The enemy attacks for: " + enemyATK + "!");
                     Thread.sleep(1200);
-//                    System.out.println(name + "'s HP: " + heroHP + " <--||--> Enemy HP: " + enemyHP);
                     System.out.printf("{%s's HP: \033[0;32m%s\u001B[0m <===||===> \033[0;32m%d\u001B[0m :Enemy's HP}%n", name, heroHP, enemyHP);
 
+                // Escape sequence
                 } else if (response.toLowerCase().startsWith("e")) {
                     Thread.sleep(500);
                     System.out.println("You're running?");
@@ -76,11 +80,14 @@ public class AdventureGame {
                     Thread.sleep(1500);
                     escaped = true;
                     break;
+
+                // Catch invalid response
                 } else {
                     System.out.println("Please enter a valid response.");
                 }
             } while (enemyHP >= 0 && heroHP >= 0);
 
+            // Enemy defeated sequence
             if (!escaped) {
                 System.out.println();
                 Thread.sleep(1500);
